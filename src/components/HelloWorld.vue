@@ -4,6 +4,7 @@
     <h2>{{ this.$store.state.text }}</h2>
     <button @click="increment">+</button>
     <button @click="decrement">-</button>
+    <h3 @click="change">{{ text }}</h3>
   </div>
 </template>
 
@@ -17,12 +18,18 @@ export default {
     },
     decrement(){
       this.$store.commit('DECREMENT_COUNT')
+    },
+    change(){
+      this.$store.commit('CHANGE_TEXT')
     }
   },
   computed : {
     currentValue(){
       return this.$store.state.currentValue
     },
+    text(){
+      return this.$store.getters.text
+    }
   },
 }
 </script>

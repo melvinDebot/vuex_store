@@ -32,6 +32,9 @@ let store =  new Vuex.Store({
     },
     clearTodo({commit}){
       commit('CLEAR_TODO')
+    },
+    changeText({commit}){
+      commit('CHANGE_TEXT')
     }
   },
   mutations : {
@@ -66,13 +69,17 @@ let store =  new Vuex.Store({
     },
     CLEAR_TODO(state){
       state.newTodo = ''
+    },
+    CHANGE_TEXT(state){
+      state.text = "DEBOT"
     }
   },
   getters: {
     // COMPUTED
     newTodo: state => state.newTodo,
     todos: state => state.todos.filter((todo) => {return !todo.completed}),
-    completedTodos: state => state.todos.filter((todo) => {return todo.completed})
+    completedTodos: state => state.todos.filter((todo) => {return todo.completed}),
+    text: state => state.text
   }
 })
 
